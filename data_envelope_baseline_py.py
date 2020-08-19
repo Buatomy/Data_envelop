@@ -4,8 +4,8 @@ import numpy as np
 from scipy.signal import find_peaks
 
 # Baseline = pd.read_csv("../DATA_envelope_baseline/BSxxxx1--00000.csv")
-ENV = pd.read_csv("../../DATA_envelope_baseline/ENVxxx1--00000.csv")
-BS = pd.read_csv("../../DATA_envelope_baseline/BSxxxx1--00000.csv")
+ENV = pd.read_csv("../data_envelop/DATA_envelope_baseline/ENVxxx1--00000.csv")
+BS = pd.read_csv("../data_envelop/DATA_envelope_baseline/BSxxxx1--00000.csv")
 peak_df = pd.DataFrame()
 
 # find HIGH LOW Logic
@@ -63,14 +63,14 @@ width = []
 count = 0
 temp_count = 0
 cal_count = []
-for i in range(1, 52637):
-    if(DataLine_array[i] > DataLine_array[i-1]):
+for i in range(1, len(DataLine_array)):
+    if DataLine_array[i] > DataLine_array[i - 1]:
         peak.append(0.1)
         temp = [-1 * (count / 100)] * (count + 1)
         cal_count = cal_count + [-1 * (count / 100)]
         width = width + temp
         count = 0
-    elif(DataLine_array[i] < DataLine_array[i-1]):
+    elif DataLine_array[i] < DataLine_array[i - 1]:
         peak.append(0.1)
         temp = [count / 100] * (count+ 1)
         cal_count = cal_count + [(count / 100)]
