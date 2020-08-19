@@ -4,8 +4,9 @@ import numpy as np
 from scipy.signal import find_peaks
 
 # Baseline = pd.read_csv("../DATA_envelope_baseline/BSxxxx1--00000.csv")
-ENV = pd.read_csv("../data_envelop/DATA_envelope_baseline/ENVxxx1--00000.csv")
-BS = pd.read_csv("../data_envelop/DATA_envelope_baseline/BSxxxx1--00000.csv")
+#add time,data to header
+ENV = pd.read_csv("../data_envelop/DATA_envelope_baseline/ENVxxx2--00000.csv")
+BS = pd.read_csv("../data_envelop/DATA_envelope_baseline/BSxxxx2--00000.csv")
 peak_df = pd.DataFrame()
 
 # find HIGH LOW Logic
@@ -89,26 +90,26 @@ raw_data = []
 
 for i in range(len(cal_count)):
     # range of positive bit
-    if (cal_count[i] <= thresholdline.th1.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.th1.at[1, 0] - 0.1):
+    if (cal_count[i] <= thresholdline.th1.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.th1.at[1, 0] - 0.2):
         raw_data = raw_data + [1]
-    elif (cal_count[i] <= thresholdline.th2.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.th2.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.th2.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.th2.at[1, 0] - 0.2):
         raw_data = raw_data + [1,1]
-    elif (cal_count[i] <= thresholdline.th3.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.th3.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.th3.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.th3.at[1, 0] - 0.2):
         raw_data = raw_data + [1, 1, 1]
-    elif (cal_count[i] <= thresholdline.th4.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.th4.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.th4.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.th4.at[1, 0] - 0.2):
         raw_data = raw_data + [1, 1, 1, 1]
-    elif (cal_count[i] <= thresholdline.th6.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.th6.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.th6.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.th6.at[1, 0] - 0.2):
         raw_data = raw_data + [1, 1, 1, 1, 1, 1]
     # range of negative bit
-    elif (cal_count[i] <= thresholdline.nth1.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.nth1.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.nth1.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.nth1.at[1, 0] - 0.2):
         raw_data = raw_data + [0]
-    elif (cal_count[i] <= thresholdline.nth2.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.nth2.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.nth2.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.nth2.at[1, 0] - 0.2):
         raw_data = raw_data + [0, 0]
-    elif (cal_count[i] <= thresholdline.nth3.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.nth3.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.nth3.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.nth3.at[1, 0] - 0.2):
         raw_data = raw_data + [0, 0, 0]
-    elif (cal_count[i] <= thresholdline.nth4.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.nth4.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.nth4.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.nth4.at[1, 0] - 0.2):
         raw_data = raw_data + [0, 0, 0, 0]
-    elif (cal_count[i] <= thresholdline.nth6.at[1, 0] + 0.1) & (cal_count[i] >= thresholdline.nth6.at[1, 0] - 0.1):
+    elif (cal_count[i] <= thresholdline.nth6.at[1, 0] + 0.2) & (cal_count[i] >= thresholdline.nth6.at[1, 0] - 0.2):
         raw_data = raw_data + [0, 0, 0, 0, 0, 0]
     else:
         raw_data = raw_data + ['start']
